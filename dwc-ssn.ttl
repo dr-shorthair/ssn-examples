@@ -57,7 +57,6 @@ ex:B_1538
   sosa:hasFeatureOfInterest ex:KW3B ;
   sosa:hasResult ex:S-B_1538 ;
   sosa:phenomenonTime ex:TI-2008-06-11 ;
-  sosa:resultTime "2008-06-11T00:00:00"^^xsd:dateTime ;
   sosa:usedProcedure dwci:AQEM ;
 .
 ex:C_1428
@@ -65,7 +64,6 @@ ex:C_1428
   sosa:hasFeatureOfInterest ex:KO3R ;
   sosa:hasResult ex:S-C_1428 ;
   sosa:phenomenonTime ex:TI-2006-06-21 ;
-  sosa:resultTime "2006-06-21T00:00:00"^^xsd:dateTime ;
   sosa:usedProcedure dwci:AQEM ;
 .
 ex:KO3R
