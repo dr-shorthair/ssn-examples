@@ -1,0 +1,156 @@
+# baseURI: https://example.org/dwc-ssn
+# imports: http://linked.data.gov.au/def/geox
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.w3.org/2006/time
+# imports: http://www.w3.org/ns/ssn/ext
+
+@prefix data: <http://linked.data.gov.au/def/datatype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dwci: <http://example.org/dwci/> .
+@prefix ex: <https://example.org/dwc-ssn/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix geox: <http://linked.data.gov.au/def/geox#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix taxon: <http://example.org/taxon/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dwci:Baetis_rhodani_count
+  a sosa:ObservableProperty ;
+  dcterms:type taxon:Baetis_rhodani ;
+.
+dwci:Ephemera_danica_count
+  a sosa:ObservableProperty ;
+  dcterms:type taxon:Ephemera_danica ;
+.
+dwci:Gyraulus_albus_count
+  a sosa:ObservableProperty ;
+  dcterms:type taxon:Gyraulus_albus ;
+.
+dwci:Serratella_ignita_count
+  a sosa:ObservableProperty ;
+  dcterms:type taxon:Serratella_ignita ;
+.
+data:Count
+  rdfs:subClassOf sosa:Result ;
+.
+<https://example.org/dwc-ssn>
+  a owl:Ontology ;
+  dcterms:created "2020-04-02"^^xsd:date ;
+  dcterms:creator <https://orcid.org/0000-0002-3884-3420> ;
+  dcterms:description "Some examples encoding the data from https://github.com/gbif/ipt/wiki/BestPracticesSamplingEventData#examples using SSN/SOSA + extensions" ;
+  dcterms:isFormatOf <https://github.com/gbif/ipt/wiki/BestPracticesSamplingEventData#freshwater-invertebrate-survey> ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+  dcterms:modified "2020-04-02"^^xsd:date ;
+  owl:imports <http://linked.data.gov.au/def/geox> ;
+  owl:imports <http://purl.org/dc/elements/1.1/> ;
+  owl:imports <http://www.w3.org/2006/time> ;
+  owl:imports <http://www.w3.org/ns/ssn/ext> ;
+.
+ex:B_1538
+  a sosa:Sampling ;
+  sosa:hasFeatureOfInterest ex:KW3B ;
+  sosa:hasResult ex:S-B_1538 ;
+  sosa:phenomenonTime ex:TI-2008-06-11 ;
+  sosa:resultTime "2008-06-11T00:00:00"^^xsd:dateTime ;
+  sosa:usedProcedure dwci:AQEM ;
+.
+ex:C_1428
+  a sosa:Sampling ;
+  sosa:hasFeatureOfInterest ex:KO3R ;
+  sosa:hasResult ex:S-C_1428 ;
+  sosa:phenomenonTime ex:TI-2006-06-21 ;
+  sosa:resultTime "2006-06-21T00:00:00"^^xsd:dateTime ;
+  sosa:usedProcedure dwci:AQEM ;
+.
+ex:KO3R
+  a sosa:FeatureOfInterest ;
+  dcterms:description "Kinzig O3 Rothenbergen" ;
+  geo:hasGeometry [
+      a sf:Point ;
+      geo:asWKT "POINT(9.100369 50.18689)"^^geo:wktLiteral ;
+    ] ;
+.
+ex:KW3B
+  a sosa:FeatureOfInterest ;
+  dcterms:description "Kinzig W3 Bulau" ;
+  geo:hasGeometry [
+      a sf:Point ;
+      geo:asWKT "POINT(8.9657 50.1316)"^^geo:wktLiteral ;
+    ] ;
+.
+ex:O-B_1538-SI
+  a sosa:Observation ;
+  sosa:hasResult [
+      a data:Count ;
+      data:value 318 ;
+    ] ;
+  sosa:observedProperty dwci:Serratella_ignita_count ;
+.
+ex:O-C_1428-BR
+  a sosa:Observation ;
+  sosa:hasResult [
+      a data:Count ;
+      data:value 14 ;
+    ] ;
+  sosa:observedProperty dwci:Baetis_rhodani_count ;
+.
+ex:O-C_1428-ED
+  a sosa:Observation ;
+  sosa:hasResult [
+      a data:Count ;
+      data:value 15 ;
+    ] ;
+  sosa:observedProperty dwci:Ephemera_danica_count ;
+.
+ex:O-C_1428-GA
+  a sosa:Observation ;
+  sosa:hasResult [
+      a data:Count ;
+      data:value 2 ;
+    ] ;
+  sosa:observedProperty dwci:Gyraulus_albus_count ;
+.
+ex:OC-B_1538
+  a sosa:ObservationCollection ;
+  sosa:hasFeatureOfInterest ex:S-B_1538 ;
+  sosa:hasMember ex:O-B_1538-SI ;
+  sosa:phenomenonTime ex:TI-2008-06-11 ;
+.
+ex:OC-C_1428
+  a sosa:ObservationCollection ;
+  sosa:hasFeatureOfInterest ex:S-C_1428 ;
+  sosa:hasMember ex:O-C_1428-BR ;
+  sosa:hasMember ex:O-C_1428-ED ;
+  sosa:hasMember ex:O-C_1428-GA ;
+  sosa:phenomenonTime ex:TI-2006-06-21 ;
+.
+ex:S-B_1538
+  a sosa:Sample ;
+  geox:hasArea [
+      a geox:SpatialMeasure ;
+      data:unit unit:M2 ;
+      data:value 1.25 ;
+    ] ;
+.
+ex:S-C_1428
+  a sosa:Sample ;
+  geox:hasArea [
+      a geox:SpatialMeasure ;
+      data:unit unit:M2 ;
+      data:value 1.25 ;
+    ] ;
+.
+ex:TI-2006-06-21
+  a time:Instant ;
+  time:inXSDDate "2006-06-21"^^xsd:date ;
+.
+ex:TI-2008-06-11
+  a time:Instant ;
+  time:inXSDDate "2008-06-11"^^xsd:date ;
+.
